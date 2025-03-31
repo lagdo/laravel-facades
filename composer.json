@@ -1,0 +1,51 @@
+{
+    "name": "lagdo/laravel-facades",
+    "type": "library",
+    "description": "Call Laravel services using facades.",
+    "authors": [
+        {"name": "Thierry Feuzeu"}
+    ],
+    "homepage": "https://github.com/lagdo/laravel-facades",
+    "license": "BSD-3-Clause",
+    "keywords": ["PHP", "Framework", "Laravel", "Services", "Facades"],
+    "support": {
+        "issues": "https://github.com/lagdo/laravel-facades/issues",
+        "source": "https://github.com/lagdo/laravel-facades"
+    },
+    "require": {
+        "lagdo/facades": "^1.0",
+        "illuminate/support": "7.*|8.*|9.*|10.*|11.*|12.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "php-coveralls/php-coveralls": "^2.4",
+        "phpunit/phpcov": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lagdo\\Laravel\\Facades\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lagdo\\Laravel\\Facades\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "@clearCache",
+            "@putenv XDEBUG_MODE=coverage",
+            "vendor/bin/phpunit"
+        ],
+        "clearCache": "rm -rf cache/*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lagdo\\Laravel\\Facades\\FacadesServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
