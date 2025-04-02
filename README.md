@@ -12,8 +12,19 @@ Facades for Laravel services
 
 With this package, Laravel services can be called using service facades, with static method syntax.
 
-It may be surprising to implement service facades for Laravel, since the same feature is already provided. Laravel has even invented the service facades!
-But unlike Laravel, the service facades implemented here are portable across different frameworks, thanks to the use of [this package](https://github.com/lagdo/facades).
+> [!NOTE]
+> It may be surprising to implement service facades for Laravel, since the same feature is already provided. Laravel even invented the service facades! But unlike Laravel, the service facades here are portable across different frameworks.
+
+### Facades definition
+
+The base classes for service facade definitions are provided by the [lagdo/facades](https://github.com/lagdo/facades) package.
+
+A service facade based on this package can be use without any change with other frameworks, if a package for this framework is available, or a `PSR-11` container can be provided.
+
+The following packages are also available:
+- Symfony: https://github.com/lagdo/symfony-facades
+- CakePHP: https://github.com/lagdo/cake-facades
+- Yii: https://github.com/lagdo/yii-facades
 
 ### Installation
 
@@ -132,7 +143,7 @@ class MyFacade extends AbstractFacade
 ```
 
 > [!IMPORTANT]
-> The `Lagdo\Facades\ServiceInstance` trait *must* be defined in the final service facade class, and not inherited by a service facade.
+> The `Lagdo\Facades\ServiceInstance` trait *must* be used in each service facade class, and not in a parent class. The same instance will be shared by all the classes inheriting the same base class using the trait, and the service facades will ot work as expected.
 
 The service container is called only once in this example code.
 
